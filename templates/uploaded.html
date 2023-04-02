@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Uploaded
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+    <h2 class="subheading">Step 2: Define The Variables</h2>
+    <p><i>The variable types are automatically selected to the data types detected in the dataset, but can be changed using the dropdown. Definitions written in the textbox will be auto-populated if variable appeared in previous data dictionary upload.</i></p>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Data Type</th>
+            <th>Definition</th>
+        </tr>
+    </thead>
+    <tbody>
+        <form id = "datadictionary" action="/uploaded" method="post">
+          {% for col in column_names %}
+          <tr>
+            <td>{{ col }}</td>
+            <td>
+                <select name="type_name_{{ col }}" id = "type_id_{{ col }}">
+                    <option selected>{{ var_type_dict[col] }}</option>
+                    {% for type in all_types %}
+                        {% if type != var_type_dict[col] %}
+                        <option value = "{{ type }}" name="{{ type }}_name">{{ type }}</option>
+                        {% endif %}
+                    {% endfor %}
+                </select>
+                </td>
+            <td>
+                <textarea name = "def_name_{{ col }}" id= "def_id_{{ col }}">{{ def_values[col] }}</textarea>
+            </td>
+          </tr>
+          {% endfor %}
+        </form>
+        
+    </tbody>
+    </table>
+    <button class="btn btn-outline-dark" type="submit" form="datadictionary">Submit</button>
+</div>
+{% endblock %}

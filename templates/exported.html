@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Exported
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+<h2 class = "subheading"> Step 3: Export Data Dictionary </h2>
+   <div class="button-menu">
+    <a class="btn btn-outline-dark" type = "submit" href="{{ url_for('download', file_type='xlsx') }}"><i class="fas fa-file-excel"></i> Excel</a>
+    <a class="btn btn-outline-dark" type = "submit" href="{{ url_for('download', file_type='pdf') }}"><i class="fa-solid fa-file-pdf"></i> PDF</a>
+   </div>
+</div>
+
+{% endblock %}

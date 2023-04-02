@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Build
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+    <h2 class="subheading">Definition Builder</h2>
+    <p><i>Variables and definitions from past uploads.</i></p>
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Definition</th>
+            <th>Modify</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+    
+        <form id="modify" method="post">
+        {% if variable_dictionary|length > 0 %}
+        {% for variable, definition in variable_dictionary %}
+        <tr>
+        <td> {{ variable }} </td>
+        <td> {{ definition }} </td>
+        <td>
+        <textarea name = "modify_name_{{ variable }}" id= "modify_id_{{ variable }}">{{ definition }}</textarea>
+        </td>
+        <td><button class="btn btn-outline-dark" type = "submit" formaction="{{ url_for('deleted') }}" name="delete" value="{{ variable }}">Delete</button></td>
+        </tr>
+        {% endfor %}
+        {% endif %}
+        
+        </form>
+    </tbody>
+    </table>
+    <button class="btn btn-outline-dark" form="modify" type="submit">Submit Modifications</button>
+    </div>
+{% endblock %}

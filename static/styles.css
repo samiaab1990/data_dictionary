@@ -1,0 +1,93 @@
+.title
+{
+    font-family:"Gloock";
+    font-size:80px;
+    font-weight:900;
+    text-align:center;
+
+}
+
+h2
+{
+    font-family:"Roboto" !important;
+}
+
+.subtitle
+{
+    font-family:"Roboto";
+    font-size:15px;
+    font-weight:700;
+    text-align:center;
+}
+
+.subheading
+{
+    font-family:"Gloock" !important;
+    font-size:30px;
+    font-weight:700;
+    text-align:left;
+    text-justify:left;
+    margin-left:450px;
+    margin-right:400px;
+}
+
+.heading-three
+{
+   
+    font-family:"Gloock" !important;
+    font-size:20px;
+    font-weight:700;
+    text-align:left;
+    text-justify:left;
+    margin-left:450px;
+    margin-right:400px;
+}
+
+
+body
+{
+    background-color:#FFFEE6 !important;
+    font-family:"Roboto";
+}
+
+a:link 
+{
+    color:#6E6E6E;
+    font-family:"Roboto";
+    font-weight:700;
+}
+
+a:visited 
+{
+    color:#6E6E6E;
+    font-family:"Roboto";
+    font-weight:700;
+}
+
+a:hover 
+{
+    color:#000000 !important;
+    font-weight:700;
+    font-family:"Roboto";
+}
+  
+a:active 
+{
+    color:#6E6E6E;
+    font-weight:700;
+    font-family:"Roboto";
+}
+
+p
+{
+    text-justify:left;
+    text-align:left;
+    margin-left:450px;
+    margin-right:400px;
+}
+
+.button-menu
+{
+    display:inline-block;
+}
+

@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Create
+{% endblock %}
+
+{% block main %}
+<div class="container-fluid">
+<h2 class="subheading">Step 1: Upload Dataset</h2>
+<p><i>Accepted formats include .txt, .csv or .xlsx files.</i></p>
+<form method=post enctype=multipart/form-data>
+    <input type=file name=file>
+    <input type=submit value=Upload >
+  </form>
+</div>
+{% endblock %}
