@@ -6,7 +6,6 @@ import os
 import io
 import pandas as pd
 import pdfkit as pdf
-import numpy as np
 from zipfile import ZipFile
 import sys
 from functions import login_required, allowed_file, write_file
@@ -33,8 +32,6 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 conn = sqlite3.connect('dictionary.db', check_same_thread=False)
 cur = conn.cursor()
 
-path_wkhtmltopdf = 'C:/Program Files/wkhtmltopdf/bin/wkhtmltopdf.exe'
-config = pdf.configuration(wkhtmltopdf=path_wkhtmltopdf)
 
 # CREATE TABLE USERS(id INTEGER PRIMARY KEY, username TEXT NOT NULL, hash TEXT NOT NULL)
 # CREATE TABLE VARIABLES(id INTEGER PRIMARY KEY, user_id TEXT NOT NULL, variable TEXT NOT NULL, definition TEXT NOT NULL)
@@ -227,10 +224,10 @@ def uploaded():
                 
         
         dataset_to_export = pd.DataFrame.from_dict(var_def_dict)
-        dataset_to_export.to_excel(UPLOAD_FOLDER + "/final.xlsx")
-        dataset_to_export.to_html(UPLOAD_FOLDER + "/final.html")
-        pdf.from_file(UPLOAD_FOLDER + "/final.html", UPLOAD_FOLDER + '/final.pdf', configuration=config)
-        os.remove(UPLOAD_FOLDER + "/final.html")
+        dataset_to_export.to_excel(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'],"final.xlsx"))
+        dataset_to_export.to_html(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'],"final.html"))
+        pdf.from_file(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'],"final.html"), os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'],"final.pdf"))
+        os.remove(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'],"final.html"))
         return redirect("/exported")
         
 
@@ -245,10 +242,10 @@ def exported():
 @app.route('/<file_type>/download', methods=['GET'])
 def download(file_type):
         if file_type == "xlsx":
-            file_return = write_file(UPLOAD_FOLDER,"final.xlsx")
+            file_return = write_file(app.config['UPLOAD_FOLDER'],"final.xlsx")
             return send_file(file_return, mimetype = 'application/xlsx', as_attachment=True, download_name = 'final.xlsx')
         if file_type == "pdf":
-            file_return = write_file(UPLOAD_FOLDER,"final.pdf")
+            file_return = write_file(app.config['UPLOAD_FOLDER'],"final.pdf")
             return send_file(file_return, mimetype = 'application/pdf', as_attachment=True, download_name = 'final.pdf')
 
 @app.route("/build", methods=["GET","POST"])   
@@ -279,3 +276,5 @@ def deleted():
         conn.commit()
         return redirect("/build")
 
+if __name__ == "__main__":
+   app.run(host='0.0.0.0', port=5000)
