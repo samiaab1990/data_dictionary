@@ -1,7 +1,7 @@
 # Data Dictionary Web Application
 ## Create a data dictionary efficiently without code.
 
-Deployed on amazon lightsail: https://flask-service.cok3onklg2mag.us-east-1.cs.amazonlightsail.com/
+Deployed on Python Anywhere: http://datadictionary.pythonanywhere.com/
 ## Introduction
 Working with data has become an integral part of many professional domains with people of various levels of expertise involved in the collection and analysis process to improve their organization's goals. A best practice around data management is creating a data dictionary that provides information about the variables in the dataset—namely, the variable type and a definition that provides context and meaning, which can easily be understood across different users of the dataset.
 
