@@ -21,5 +21,7 @@ def write_file(upload_folder, filename):
     with open(os.path.join(os.getcwd(), upload_folder,filename), 'rb') as file:
         file_return.write(file.read())
     file_return.seek(0)
-    os.remove(os.path.join(os.getcwd(), upload_folder,filename))
     return file_return
+
+def delete_file(upload_folder, filename):
+    os.remove(os.path.join(os.getcwd(), upload_folder,filename))

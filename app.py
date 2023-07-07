@@ -227,7 +227,6 @@ def uploaded():
         dataset_to_export.to_excel(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'],"final.xlsx"))
         dataset_to_export.to_html(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'],"final.html"))
         pdf.from_file(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'],"final.html"), os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'],"final.pdf"))
-        os.remove(os.path.join(os.getcwd(), app.config['UPLOAD_FOLDER'],"final.html"))
         return redirect("/exported")
         
 
@@ -276,5 +275,3 @@ def deleted():
         conn.commit()
         return redirect("/build")
 
-if __name__ == "__main__":
-   app.run(host='0.0.0.0', port=5000)
